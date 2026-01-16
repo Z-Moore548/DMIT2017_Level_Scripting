@@ -18,7 +18,7 @@ public class VehicleControllerNew : MonoBehaviour
 
     const float ACCELERATION_FACTOR = 30.0f;
     const float BRAKE_FACTOR = -5.0f;
-    const float STEER_FACTOR = 50.0f;
+    const float STEER_FACTOR = 70.0f;
 
     private Rigidbody rb;
 
