@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,9 +9,9 @@ public class VehicleController : MonoBehaviour
 
     public float accelValue, stopValue, steerValue, decelerationValue = 1.0f;
     public float currentSpeed, maxSpeed;
-    const float ACCELERATION_FACTOR = 5.0f;
-    const float STOP_FACTOR = 5.0f;
-    const float STEER_FACTOR = 50.0f;
+    const float ACCELERATION_FACTOR = 20.0f;
+    const float STOP_FACTOR = 10.0f;
+    const float STEER_FACTOR = 70.0f;
 
     private Rigidbody rBody;
 
@@ -27,6 +28,8 @@ public class VehicleController : MonoBehaviour
 
         steer.performed += SteerInput;
         steer.canceled += SteerInput;
+
+        Physics.gravity = new Vector3(0, -100, 0);
     }
     void Update()
     {
@@ -60,6 +63,31 @@ public class VehicleController : MonoBehaviour
     public void SteerInput(InputAction.CallbackContext c)
     {
         steerValue = c.ReadValue<float>() * STEER_FACTOR;
+    }
+    public void SpeedBoost(float boost_)
+    {
+        StartCoroutine(BoostTimer(boost_, 10f));
+    }
+    public void SlowBoost(float boost_)
+    {
+        StartCoroutine(SlowTimer(boost_, 10f));
+    }
+
+    private IEnumerator BoostTimer(float boost_, float duration_)
+    {
+        currentSpeed += boost_;
+        maxSpeed += boost_ * 2;
+        yield return new WaitForSeconds(duration_);
+        currentSpeed -= boost_;
+        maxSpeed -= boost_ * 2;
+    }
+    private IEnumerator SlowTimer(float boost_, float duration_)
+    {
+        currentSpeed -= boost_;
+        maxSpeed -= boost_ * 2;
+        yield return new WaitForSeconds(duration_);
+        currentSpeed += boost_;
+        maxSpeed += boost_ * 2;
     }
 
     void OnEnable()
