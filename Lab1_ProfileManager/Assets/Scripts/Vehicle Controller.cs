@@ -66,11 +66,11 @@ public class VehicleController : MonoBehaviour
     }
     public void SpeedBoost(float boost_)
     {
-        StartCoroutine(BoostTimer(boost_, 10f));
+        StartCoroutine(BoostTimer(boost_, 3f));
     }
     public void SlowBoost(float boost_)
     {
-        StartCoroutine(SlowTimer(boost_, 10f));
+        StartCoroutine(SlowTimer(boost_, 3f));
     }
 
     private IEnumerator BoostTimer(float boost_, float duration_)

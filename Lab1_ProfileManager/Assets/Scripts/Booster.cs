@@ -7,7 +7,7 @@ public class Booster : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            car.GetComponent<VehicleController>().SpeedBoost(10);
+            car.GetComponent<VehicleController>().SpeedBoost(50);
         }
     }
 }
