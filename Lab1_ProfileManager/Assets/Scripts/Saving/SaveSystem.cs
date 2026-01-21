@@ -11,25 +11,25 @@ public class SaveSystem : MonoBehaviour
     void Start()
     {
         //CreateSave("Sujan", 1000);
-        Debug.Log(LoadData("Sujan"));
+        //Debug.Log(LoadData("Sujan"));
     }
     
-    public void CreateSave(string profile, int score)
-    {
-        SaveData saveData = new SaveData(profile, score);
-        bool fileExists = File.Exists(filePath);
+    // public void CreateSave(string profile, int score)
+    // {
+    //     SaveData saveData = new SaveData(profile, score);
+    //     bool fileExists = File.Exists(filePath);
 
-        using(StreamWriter writer = new StreamWriter(filePath, true))
-        {
-            if (!fileExists)
-            {
-                writer.WriteLine("Profile Name, Score");
-            }
+    //     using(StreamWriter writer = new StreamWriter(filePath, true))
+    //     {
+    //         if (!fileExists)
+    //         {
+    //             writer.WriteLine("Profile Name, Score");
+    //         }
 
-            writer.WriteLine($"{saveData.profileName}, {saveData.highScore}");
-            saveDataList.Add(saveData);
-        }
-    }
+    //         writer.WriteLine($"{saveData.profileName}, {saveData.highScore}");
+    //         saveDataList.Add(saveData);
+    //     }
+    // }
     public void UpdateScore(SaveData saveData_)
     {
         
@@ -38,32 +38,35 @@ public class SaveSystem : MonoBehaviour
     {
         
     }
-    public int LoadData(string profileName_)
-    {
-        int highScore = 0;
-        string[] lines = File.ReadAllLines(filePath);
-        for (int i = 0; i < lines.Length; i++)
-        {
-            string[] columns = Regex.Split(lines[i], ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-            if(columns[0] == profileName_)
-            {
-                highScore = int.Parse(columns[1]);
-                break;
-            }
-        }
-        SaveData saveData = new SaveData(profileName_, highScore);
-        saveDataList.Add(saveData);
-        return highScore;
-    }
+    // public int LoadData(string profileName_)
+    // {
+    //     int highScore = 0;
+    //     string[] lines = File.ReadAllLines(filePath);
+    //     for (int i = 0; i < lines.Length; i++)
+    //     {
+    //         string[] columns = Regex.Split(lines[i], ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+    //         if(columns[0] == profileName_)
+    //         {
+    //             highScore = int.Parse(columns[1]);
+    //             break;
+    //         }
+    //     }
+    //     SaveData saveData = new SaveData(profileName_, highScore);
+    //     saveDataList.Add(saveData);
+    //     return highScore;
+    // }
 }
 [Serializable]
 public class SaveData
 {
     public string profileName;
     public int highScore;
-    public SaveData(string profile, int score)
+    public GhostData ghostData;
+    public SaveData(string profile, int score, GhostData data)
     {
         profileName = profile;
         highScore = score;
+        ghostData = data;
+
     }
 }

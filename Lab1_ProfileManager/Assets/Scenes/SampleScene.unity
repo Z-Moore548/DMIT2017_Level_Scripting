@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dc081b4e4f008478969adc8b79410b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishLine
+  recorder: {fileID: 0}
 --- !u!65 &63954362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -672,18 +673,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2220488299164680738, guid: 8121f63176c6507428294937793ddf08, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748122430080816941, guid: 8121f63176c6507428294937793ddf08, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054721927673448854, guid: 8121f63176c6507428294937793ddf08, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 910575816912867947, guid: 8121f63176c6507428294937793ddf08, type: 3}
+      propertyPath: saving
+      value: 
+      objectReference: {fileID: 1375394865}
+    - target: {fileID: 910575816912867947, guid: 8121f63176c6507428294937793ddf08, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 267991543}
     - target: {fileID: 6427341171246580327, guid: 8121f63176c6507428294937793ddf08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.76
@@ -1100,6 +1097,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3916782376388924376, guid: 1a1b75bbd58e09d4db4dea375ed939d6, type: 3}
   m_PrefabInstance: {fileID: 265300115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &267991542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267991544}
+  - component: {fileID: 267991543}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &267991543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267991542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b46290f0ec2d0744a8175a0fb16fbd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  profileSelected: Sujan
+--- !u!4 &267991544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267991542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.34517, y: 0.5, z: -14.09212}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274687991
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,28 +7171,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1375394864}
-  - component: {fileID: 1375394863}
+  - component: {fileID: 1375394865}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SaveSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1375394863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375394862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9467ab7f902f1e647b2c3959a96fa0df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveSystem
-  filePath: Assets/Resources/SaveData.csv
-  saveDataList: []
 --- !u!4 &1375394864
 Transform:
   m_ObjectHideFlags: 0
@@ -7166,6 +7194,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1375394865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375394862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257ad86ae3cf8ba42a8efc1ee27673a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JSonSaving
+  filePath: Assets/Resources/SaveData
+  profileData:
+    profileName: 
+    highScore: 0
+    ghostData:
+      ghostDataFrames: []
 --- !u!1001 &1381613621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11253,3 +11299,4 @@ SceneRoots:
   - {fileID: 63954359}
   - {fileID: 55466166}
   - {fileID: 747456916}
+  - {fileID: 267991544}
