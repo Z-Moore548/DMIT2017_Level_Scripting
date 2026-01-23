@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class FinishLine : MonoBehaviour
 {
     [SerializeField] GhostDataRecorder recorder;
+    public GameObject canvas;
     void Start()
     {
         recorder = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponentInParent<GhostDataRecorder>();
@@ -14,8 +15,9 @@ public class FinishLine : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            recorder.SaveData();
-            //SceneManager.LoadScene("MainMenu");
+            canvas.SetActive(true);
+            // recorder.SaveData();
+            // SceneManager.LoadScene("MainMenu");
         }
     }
 }

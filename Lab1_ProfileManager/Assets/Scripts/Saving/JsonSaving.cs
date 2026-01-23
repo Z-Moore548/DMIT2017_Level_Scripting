@@ -1,12 +1,17 @@
 using UnityEngine;
 using System.IO;
-using Unity.Android.Gradle.Manifest;
 
 public class JSonSaving : MonoBehaviour
 {
     public string filePath;
     public SaveData profileData;
     string profileName;
+    GameManager gameManager;
+    void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").gameObject.GetComponent<GameManager>();
+        filePath = $"Assets/Resources/{gameManager.ProfileSelected}";
+    }
     [ContextMenu("JSON Save")]
 
     public void SaveData(string profileName_, int score, GhostData ghostData)
@@ -20,18 +25,20 @@ public class JSonSaving : MonoBehaviour
 
     [ContextMenu("JSON Load")]
 
-    public void LoadData()
+    public SaveData LoadData()
     {
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
 
             profileData = JsonUtility.FromJson<SaveData>(json);
+            return profileData;
         }
 
         else
         {
-            Debug.LogError("Save file not found");
+            Debug.LogError($"Save file not found. {filePath} what");
+            return null;
         }
     }
 }

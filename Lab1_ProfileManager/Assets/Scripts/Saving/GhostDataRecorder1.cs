@@ -18,7 +18,7 @@ public class GhostDataRecorder : MonoBehaviour
         recording = true;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (!recording) return;
 
