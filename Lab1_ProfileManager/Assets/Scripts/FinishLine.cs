@@ -9,12 +9,13 @@ public class FinishLine : MonoBehaviour
     public GameObject canvas;
     void Start()
     {
-        recorder = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponentInParent<GhostDataRecorder>();
+        //recorder = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponentInParent<GhostDataRecorder>();
     }
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
+            recorder = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponentInParent<GhostDataRecorder>();
             canvas.SetActive(true);
             // recorder.SaveData();
             // SceneManager.LoadScene("MainMenu");

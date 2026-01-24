@@ -10,13 +10,13 @@ public class JSonSaving : MonoBehaviour
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").gameObject.GetComponent<GameManager>();
-        filePath = $"Assets/Resources/{gameManager.ProfileSelected}";
+        filePath = $"SaveData/{gameManager.ProfileSelected}";
     }
     [ContextMenu("JSON Save")]
 
-    public void SaveData(string profileName_, int score, GhostData ghostData)
+    public void SaveData(string profileName_, int score, GhostData ghostData, string color)
     {
-        SaveData saveProfile = new SaveData(profileName_, score, ghostData);
+        SaveData saveProfile = new SaveData(profileName_, score, ghostData, color);
         string file = filePath + profileName + ".json";
         string json = JsonUtility.ToJson(saveProfile, true);
 
@@ -27,6 +27,7 @@ public class JSonSaving : MonoBehaviour
 
     public SaveData LoadData()
     {
+        filePath = $"SaveData/{gameManager.ProfileSelected}";
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
@@ -37,7 +38,6 @@ public class JSonSaving : MonoBehaviour
 
         else
         {
-            Debug.LogError($"Save file not found. {filePath} what");
             return null;
         }
     }

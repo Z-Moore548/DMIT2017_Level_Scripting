@@ -11,6 +11,8 @@ public class GhostDataRecorder : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").gameObject.GetComponent<GameManager>();
+        saving = GameObject.FindGameObjectWithTag("Saving").gameObject.GetComponent<JSonSaving>();
         StartRecording();
     }
     public void StartRecording()
@@ -27,6 +29,6 @@ public class GhostDataRecorder : MonoBehaviour
 
     public void SaveData()
     {
-        saving.SaveData(gameManager.ProfileSelected, ghostData.ghostDataFrames.Count, ghostData);
+        saving.SaveData(gameManager.ProfileSelected, ghostData.ghostDataFrames.Count, ghostData, gameManager.CarSelected);
     }
 }

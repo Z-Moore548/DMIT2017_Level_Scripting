@@ -4,8 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] string profileSelected;
+    [SerializeField] string carSelected;
 
     public string ProfileSelected { get => profileSelected; set => profileSelected = value; }
+    public string CarSelected { get => carSelected; set => carSelected = value; }
 
     void Awake()
     {

@@ -61,12 +61,14 @@ public class SaveData
 {
     public string profileName;
     public int highScore;
+    public string carColor;
     public GhostData ghostData;
-    public SaveData(string profile, int score, GhostData data)
+    
+    public SaveData(string profile, int score, GhostData data, string color)
     {
         profileName = profile;
         highScore = score;
         ghostData = data;
-
+        carColor = color;
     }
 }

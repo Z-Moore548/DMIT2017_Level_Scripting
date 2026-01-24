@@ -7,6 +7,7 @@ public class Obstacle : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            car = other.transform.parent.gameObject;
             car.GetComponent<VehicleController>().SlowBoost(10);
         }
     }
