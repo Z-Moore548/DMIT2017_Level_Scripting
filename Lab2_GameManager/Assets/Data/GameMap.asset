@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9709726a47ddb42a3601466b356efa, type: 3}
+  m_Name: GameMap
+  m_EditorClassIdentifier: Assembly-CSharp::GameMap
+  prefab: {fileID: 3919072838453957069, guid: 47bc91b43f26c764781704f81ad8da75, type: 3}
+  mapName: Overworld
+  mapID: 0
+  entryPoints:
+  - entryPointId: 0
+    cell: {x: 9, y: 8, z: 0}

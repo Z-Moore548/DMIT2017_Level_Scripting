@@ -11,8 +11,10 @@ public class PlayerAnimation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Dictionary<PlayerAnimationState, AnimationData> animationDictionary = new Dictionary<PlayerAnimationState, AnimationData>();
     bool isPlaying = false;
+    public PlayerAnimationState currentState;
     public void Start()
     {
+        currentState = PlayerAnimationState.IDLE_DOWN;
         InitializeDictionary();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -28,14 +30,51 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetAnimationState(Vector2 moveDirection)
     {
+        if(moveDirection == Vector2.zero)
+        {
+            currentState = GetIdleState(currentState);
+        }
         if(moveDirection.y < 0)
         {
-            InitializeAnimation(animationDictionary[PlayerAnimationState.WALK_DOWN]);
+            currentState = PlayerAnimationState.WALK_DOWN;
+        }
+        else if(moveDirection.y >0)
+        {
+            currentState = PlayerAnimationState.WALK_UP;
         }
 
-        // create animation assets for remaining walk cycles
+        else if (moveDirection.x < 0)
+        {
+            currentState = PlayerAnimationState.WALK_LEFT;
+        }
 
-        // call InitializeAnimation based on the direction the player is moving
+        else if(moveDirection.x > 0)
+        {
+            currentState = PlayerAnimationState.WALK_RIGHT;
+        }
+        InitializeAnimation(animationDictionary[currentState]);
+
+        
+    }
+    public PlayerAnimationState GetIdleState(PlayerAnimationState currentState)
+    {
+        PlayerAnimationState tmp = PlayerAnimationState.IDLE_DOWN;
+        switch (currentState)
+        {
+            case PlayerAnimationState.WALK_DOWN:
+            tmp = PlayerAnimationState.IDLE_DOWN;
+            break;
+            case PlayerAnimationState.WALK_UP:
+            tmp = PlayerAnimationState.IDLE_UP;
+            break;
+            case PlayerAnimationState.WALK_LEFT:
+            tmp = PlayerAnimationState.IDLE_LEFT;
+            break;
+            case PlayerAnimationState.WALK_RIGHT:
+            tmp = PlayerAnimationState.IDLE_RIGHT;
+            break;
+        }
+        return tmp;
     }
 
     private IEnumerator PlayAnimation(AnimationData animation)
