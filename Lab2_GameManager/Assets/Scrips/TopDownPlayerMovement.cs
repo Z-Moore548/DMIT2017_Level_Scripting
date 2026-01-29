@@ -8,9 +8,11 @@ public class TopDownPlayerMovement : MonoBehaviour
     private Vector2 movementDirection = Vector2.zero;
     public float moveSpeed;
     public event Action<Vector2> OnMove;
+    Rigidbody2D rb;
     private void Awake()
     {
         moveInput.Enable();
+        rb = GetComponent<Rigidbody2D>();
         moveInput.performed += GetMoveVector;
         moveInput.canceled += GetMoveVector;
 
@@ -23,8 +25,9 @@ public class TopDownPlayerMovement : MonoBehaviour
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position += new Vector3(movementDirection.x, movementDirection.y, 0) * moveSpeed * Time.deltaTime;
+        //transform.position += new Vector3(movementDirection.x, movementDirection.y, 0) * moveSpeed * Time.deltaTime;
+        rb.AddForce(movementDirection * moveSpeed * Time.fixedDeltaTime);
     }
 }

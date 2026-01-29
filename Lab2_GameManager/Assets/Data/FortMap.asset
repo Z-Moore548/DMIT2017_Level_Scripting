@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c9709726a47ddb42a3601466b356efa, type: 3}
-  m_Name: GameMap
+  m_Name: FortMap
   m_EditorClassIdentifier: Assembly-CSharp::GameMap
-  prefab: {fileID: 3919072838453957069, guid: 47bc91b43f26c764781704f81ad8da75, type: 3}
-  mapName: Overworld
-  mapID: 0
+  prefab: {fileID: 1989182616965122263, guid: 1d49c1c0dbf8417449b6ee8d81a85f1c, type: 3}
+  mapName: Fort
+  mapID: 2
   entryPoints:
   - entryPointId: 0
-    cell: {x: 9, y: 8, z: 0}
-  - entryPointId: 1
-    cell: {x: 21, y: -4, z: 0}
-  - entryPointId: 2
-    cell: {x: 19, y: 5, z: 0}
+    cell: {x: 24, y: 20, z: 0}
