@@ -15,4 +15,4 @@ MonoBehaviour:
   animationName: IdleDown
   frames:
   - {fileID: -1323817261, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
-  frameDelay: 0.5
+  frameDelay: 0.2
