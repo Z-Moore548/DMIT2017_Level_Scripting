@@ -12,11 +12,13 @@ public class PlayerAnimation : MonoBehaviour
     private Dictionary<PlayerAnimationState, AnimationData> animationDictionary = new Dictionary<PlayerAnimationState, AnimationData>();
     bool isPlaying = false;
     public PlayerAnimationState currentState;
+    private SpriteAnimation spriteAnimator;
     public void Start()
     {
         currentState = PlayerAnimationState.IDLE_DOWN;
         InitializeDictionary();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteAnimator = GetComponent<SpriteAnimation>();
 
         TopDownPlayerMovement topDownPlayerMovement = GetComponent<TopDownPlayerMovement>();
         topDownPlayerMovement.OnMove += SetAnimationState;
@@ -25,7 +27,6 @@ public class PlayerAnimation : MonoBehaviour
     public void InitializeAnimation(AnimationData animation)
     {
         StopAllCoroutines();
-        StartCoroutine(PlayAnimation(animation));
     }
 
     public void SetAnimationState(Vector2 moveDirection)
@@ -52,7 +53,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             currentState = PlayerAnimationState.WALK_RIGHT;
         }
-        InitializeAnimation(animationDictionary[currentState]);
+         spriteAnimator.InitializeAnimation(animationDictionary[currentState]);
 
         
     }
@@ -77,27 +78,9 @@ public class PlayerAnimation : MonoBehaviour
         return tmp;
     }
 
-    private IEnumerator PlayAnimation(AnimationData animation)
-    {
-        isPlaying = true;
-        spriteRenderer.sprite = animation.frames[0];
-        int frameCount = animation.frames.Length;
-        int frameIndex = 0;
+    
 
-        while (isPlaying)
-        {
-            yield return new WaitForSeconds(animation.frameDelay);
-            frameIndex++;
-            if(frameIndex >= frameCount) { frameIndex = 0; }
-            spriteRenderer.sprite = animation.frames[frameIndex];
-
-            yield return null;
-        }
-
-        yield return null;
-    }
-
-    public void StopAnimation() { isPlaying = false; }
+    
     public void InitializeDictionary()
     {
         foreach (AnimationStateData animationStateData in animationStates)
