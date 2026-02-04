@@ -1,35 +1,22 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
+    [Header("Projectile Info")]
     public GameObject projectilePrefab;
-    public Transform porjectileSpawnLocation;
-    
-    
+    public Transform projectileSpawnLocation;
     public override void Attack()
     {
-        GameObject obj = Instantiate(projectilePrefab, porjectileSpawnLocation.position, Quaternion.identity);
+        // instantiate a projectile
+        // give the projectile a direction + velocity
+        // projectile handles collisions 
+
+        GameObject obj = Instantiate(projectilePrefab, projectileSpawnLocation.position, Quaternion.identity);
         SimpleProjectile projectile = obj.GetComponent<SimpleProjectile>();
-        projectile.InstantiateProjectile(new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y).normalized);
+        projectile.InstantiateProjectile(new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y));
     }
 
     public override void Die()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Patrol()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Pursue()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, playerPosition, (speed * Time.deltaTime));
-    }
-
-    public override void TakeDamage(float dmg_)
     {
         throw new System.NotImplementedException();
     }

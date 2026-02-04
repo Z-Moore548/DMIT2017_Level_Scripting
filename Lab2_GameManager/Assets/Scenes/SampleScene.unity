@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d741b97bbbe1f44e9e4c35b95b71692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircleOverlap
-  radius: 10
+  radius: 5
   tagToCheck: Player
   color: {r: 0, g: 0.16380644, b: 1, a: 1}
 --- !u!1 &1494454998
@@ -832,6 +832,8 @@ GameObject:
   - component: {fileID: 1494455001}
   - component: {fileID: 1494455000}
   - component: {fileID: 1494455002}
+  - component: {fileID: 1494455003}
+  - component: {fileID: 1494455004}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -928,17 +930,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4d0a5f1a4e23145aaf392e857bf78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
-  enemyName: 
   HP: 0
   ATK: 0
   DEF: 0
-  speed: 2
   attackDelay: 5
-  sightLine: {fileID: 1385565630}
+  sightline: {fileID: 1385565630}
   attackRange: {fileID: 1553685597}
   playerPosition: {x: 0, y: 0}
+  patrolRange: {x: 3, y: 3}
   projectilePrefab: {fileID: 2532890393309705171, guid: 625fc3f388cbd84449d044f4cc62f599, type: 3}
-  porjectileSpawnLocation: {fileID: 89624335}
+  projectileSpawnLocation: {fileID: 1494455001}
+--- !u!114 &1494455003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494454998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a201ed085f5a2f64c8ac4136222eae5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIMovement
+  range: 0.5
+  moveSpeed: 3
+--- !u!50 &1494455004
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494454998}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1553685595
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d741b97bbbe1f44e9e4c35b95b71692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircleOverlap
-  radius: 5
+  radius: 3
   tagToCheck: Player
   color: {r: 1, g: 0, b: 0.07164097, a: 1}
 --- !u!1 &1651603522
