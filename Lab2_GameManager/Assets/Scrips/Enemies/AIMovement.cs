@@ -9,6 +9,7 @@ public class AIMovement : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D rb;
     public event Action OnArrive;
+    public event Action<Vector2> OnVelocityChange;
     Vector3 newPosition;
 
     private void Awake()
@@ -18,6 +19,7 @@ public class AIMovement : MonoBehaviour
 
     public void InitializeMovement(Vector3 newPosition_)
     {
+        StopAllCoroutines();
         newPosition = newPosition_;
         StartCoroutine(MoveToPosition());
     }
@@ -38,6 +40,7 @@ public class AIMovement : MonoBehaviour
             Vector2 moveDir = newPosition - transform.position;
             moveDir.Normalize();
             rb.linearVelocity = moveDir * moveSpeed;
+            OnVelocityChange?.Invoke(rb.linearVelocity);
             inRange = (Vector2.Distance(transform.position, newPosition) < range);
 
             if (inRange)

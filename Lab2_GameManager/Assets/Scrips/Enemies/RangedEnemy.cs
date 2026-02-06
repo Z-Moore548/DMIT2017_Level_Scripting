@@ -16,8 +16,5 @@ public class RangedEnemy : Enemy
         projectile.InstantiateProjectile(new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y));
     }
 
-    public override void Die()
-    {
-        throw new System.NotImplementedException();
-    }
+
 }

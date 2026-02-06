@@ -10,7 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     public List<AnimationStateData> animationStates = new List<AnimationStateData>();
     private SpriteRenderer spriteRenderer;
     private Dictionary<PlayerAnimationState, AnimationData> animationDictionary = new Dictionary<PlayerAnimationState, AnimationData>();
-    bool isPlaying = false;
+    //bool isPlaying = false;
     public PlayerAnimationState currentState;
     private SpriteAnimation spriteAnimator;
     public void Start()

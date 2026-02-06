@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour
     private Vector2 nextPosition;
     private AIMovement aiMovement;
 
-    private bool patroling;
+    private bool patroling, outofRange;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public abstract class Enemy : MonoBehaviour
         attackRange.OnOverlap += SetPlayerPosition;
         aiMovement = GetComponent<AIMovement>();
         aiMovement.OnArrive += Patrol;
-        startingPosition = transform.position;
+        startingPosition = transform.localPosition;
     }
 
     public void SetPlayerPosition(Vector2 pos_)
@@ -54,7 +54,10 @@ public abstract class Enemy : MonoBehaviour
     {
         HP -= dmg_;
     }
-    public abstract void Die();
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
     public void Pursue()
     {
         aiMovement.InitializeMovement(playerPosition);
@@ -64,6 +67,11 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if(HP == 0)
+        {
+            Debug.Log("GHG");
+            Die();
+        }
         if (attackRange.CircleOverlapCheck())
         {
             aiMovement.StopMovement();
@@ -74,26 +82,31 @@ public abstract class Enemy : MonoBehaviour
         if (sightline.CircleOverlapCheck())
         {
             Pursue();
+            
             return;
         }
         if (!patroling)
         {
             Patrol();
+            attackCoroutine = null;
+            outofRange = true;
             patroling = true;
         }
+        
     }
     public void StartAttackCoroutine()
     {
+        outofRange = false;
         if(attackCoroutine == null) attackCoroutine = StartCoroutine(AttackCoroutine());
     }
     public IEnumerator AttackCoroutine()
     {
-        while (true)
+        while (!outofRange)
         {
             Attack();
             yield return new WaitForSeconds(attackDelay);
         }
-       // yield return null;
+       yield return null;
     }
 
 }
