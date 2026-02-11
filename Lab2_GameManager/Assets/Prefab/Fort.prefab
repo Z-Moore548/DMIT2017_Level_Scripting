@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnPoints:
   - {fileID: 60926440655154050}
+  activeEnemies: []
+  enemyDatabase: {fileID: 11400000, guid: 9247b2e9cd140f641bd4267a66b6136b, type: 2}
 --- !u!1 &1989182616965122263
 GameObject:
   m_ObjectHideFlags: 0

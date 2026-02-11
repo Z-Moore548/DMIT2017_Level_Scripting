@@ -26800,6 +26800,8 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 3362898359986708401}
   - {fileID: 3639239626349843791}
+  activeEnemies: []
+  enemyDatabase: {fileID: 11400000, guid: 9247b2e9cd140f641bd4267a66b6136b, type: 2}
 --- !u!1 &2861853854181710115
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,19 +4,22 @@ using UnityEngine.InputSystem;
 
 public class TopDownPlayerMovement : MonoBehaviour
 {
-    public InputAction moveInput, attackAction;
+    public InputAction moveInput, attackAction, interactAction;
     private Vector2 movementDirection = Vector2.zero;
     public float moveSpeed;
     public event Action<Vector2> OnMove;
     Rigidbody2D rb;
+    public bool interact;
     private void Awake()
     {
         moveInput.Enable();
         attackAction.Enable();
+        interactAction.Enable();
         rb = GetComponent<Rigidbody2D>();
         moveInput.performed += GetMoveVector;
         moveInput.canceled += GetMoveVector;
         attackAction.performed += AttackInput;
+        interactAction.performed += InteractInput;
 
     }
 
@@ -44,5 +47,9 @@ public class TopDownPlayerMovement : MonoBehaviour
             }
         }
 
+    }
+    public void InteractInput(InputAction.CallbackContext c)
+    {
+        interact = true;
     }
 }

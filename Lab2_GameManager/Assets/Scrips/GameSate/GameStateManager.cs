@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
-    public List<MapState> mapStates = new List<MapState>();
+    //public List<MapState> mapStates = new List<MapState>();
+    public GameState gameState;
     public Transform mapParent;
     private EnemySpawner spawner;
     private int currentMapID;
@@ -18,18 +19,19 @@ public class GameStateManager : MonoBehaviour
     }
     private void Start()
     {
-        InitializeMap(0);
-        foreach(MapState mapState in mapStates)
+        foreach(MapState mapState in gameState.mapStates)
         {
             mapState.InitializeDictionary();
         }
+
+        InitializeMap(0);
     }
     public void InitializeMap(int mapID_)
     {
        
-        foreach (MapState mapState in mapStates)
+        foreach (MapState mapState in gameState.mapStates)
         {
-            if(mapState.mapData.mapID == mapID_)
+            if(mapState.mapID == mapID_)
             {
                 currentMapState = mapState;
                 BeginEnemySpawn(currentMapState);
@@ -44,7 +46,17 @@ public class GameStateManager : MonoBehaviour
         foreach(EnemyState enemy in map.enemyStates)
         {
 
-            if(enemy.currentHP > 0) spawner.Spawn(enemy, enemy.currentHP);
+            if(enemy.currentHP > 0) spawner.Spawn(enemy.enemyID, enemy.currentHP);
+        }
+    }
+    public void ResetEnemies()
+    {
+        foreach(MapState m in gameState.mapStates)
+        {
+            foreach(EnemyState s in m.enemyStates)
+            {
+                s.currentHP = s.maxHP;
+            }
         }
     }
 
@@ -68,9 +80,9 @@ public class GameStateManager : MonoBehaviour
 [Serializable] 
 public class MapState
 {
-    public GameMap mapData;
+    public int mapID;
     public List<EnemyState> enemyStates;
-    public Dictionary<int, EnemyState> enemyDictionary;
+    [NonSerialized] public Dictionary<int, EnemyState> enemyDictionary;
 
     public void InitializeDictionary()
     {
@@ -87,5 +99,11 @@ public class EnemyState
 {
     public int enemyID;
     public int currentHP;
-    public EnemySO enemySO;
+    public int maxHP;
+}
+
+[Serializable]
+public class GameState
+{
+    public List<MapState> mapStates;
 }

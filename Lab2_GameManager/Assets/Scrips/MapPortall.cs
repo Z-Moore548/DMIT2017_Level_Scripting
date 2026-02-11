@@ -8,6 +8,6 @@ public class MapPortall : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag != "Player") return;
-        MapNavagation.Instance.GoToMap(targetMap, targetEntryPoint);
+        MapNavigation.Instance.GoToMap(targetMap, targetEntryPoint);
     }
 }

@@ -57,7 +57,7 @@ public abstract class Enemy : MonoBehaviour
     }
     public void Die()
     {
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
     public void Pursue()
     {
@@ -68,7 +68,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(HP == 0)
+        if(HP <= 0)
         {
             Debug.Log("GHG");
             Die();

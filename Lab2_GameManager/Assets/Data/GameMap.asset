@@ -16,11 +16,11 @@ MonoBehaviour:
   mapName: Overworld
   mapID: 0
   entryPoints:
-  - entryPointId: 0
+  - entryPointID: 0
     cell: {x: 9, y: 8, z: 0}
-  - entryPointId: 1
+  - entryPointID: 1
     cell: {x: 21, y: -4, z: 0}
-  - entryPointId: 2
+  - entryPointID: 2
     cell: {x: 19, y: 5, z: 0}
-  - entryPointId: 3
+  - entryPointID: 3
     cell: {x: 10, y: 1, z: 0}

@@ -2109,6 +2109,7 @@ GameObject:
   - component: {fileID: 8973693860322128151}
   - component: {fileID: 3877594151854986982}
   - component: {fileID: 1114992419336430915}
+  - component: {fileID: 2341238947137645930}
   - component: {fileID: 7138889751242031365}
   m_Layer: 0
   m_Name: Bed
@@ -2662,6 +2663,18 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
+--- !u!114 &2341238947137645930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408581262475556622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cfa50ebd228e6489889ab7149836a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InnSleep
 --- !u!19719996 &7138889751242031365
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -6858,8 +6871,56 @@ Transform:
   - {fileID: 3999626916575811041}
   - {fileID: 8711581347842150826}
   - {fileID: 5061776962663307337}
+  - {fileID: 7207989117201150377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8947753429030637362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7207989117201150377}
+  - component: {fileID: 7938677801510794171}
+  m_Layer: 0
+  m_Name: Spanwer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7207989117201150377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947753429030637362}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -36.44929, y: 2.35167, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1498391240961111156}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7938677801510794171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947753429030637362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8b710bdc2545c4c96122c4cc798078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  spawnPoints: []
+  activeEnemies: []
+  enemyDatabase: {fileID: 11400000, guid: 9247b2e9cd140f641bd4267a66b6136b, type: 2}
 --- !u!1 &9163264730096324629
 GameObject:
   m_ObjectHideFlags: 0

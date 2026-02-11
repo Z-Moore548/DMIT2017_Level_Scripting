@@ -14,6 +14,6 @@ public class GameMap : ScriptableObject
 [Serializable]
 public class MapEntryPoint
 {
-    public int entryPointId;
+    public int entryPointID;
     public Vector3Int cell;
 }

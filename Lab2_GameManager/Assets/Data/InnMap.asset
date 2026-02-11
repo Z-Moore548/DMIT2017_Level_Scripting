@@ -16,5 +16,5 @@ MonoBehaviour:
   mapName: Inn
   mapID: 3
   entryPoints:
-  - entryPointId: 0
+  - entryPointID: 0
     cell: {x: -27, y: 0, z: 0}
