@@ -21,7 +21,9 @@ public class InnSleep : MonoBehaviour
         {
             if (player.GetComponent<TopDownPlayerMovement>().interact)
             {
+                ScreenFader.instance.BeginScreenFade(1);
                 GameStateManager.Instance.ResetEnemies();
+                player.GetComponent<TopDownPlayerMovement>().RestoreHP();
                 player.GetComponent<TopDownPlayerMovement>().interact = false;
             }
         }

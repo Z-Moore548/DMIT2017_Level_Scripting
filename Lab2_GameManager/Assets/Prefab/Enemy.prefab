@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d741b97bbbe1f44e9e4c35b95b71692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircleOverlap
-  radius: 3
+  radius: 4
   tagToCheck: Player
   color: {r: 1, g: 0, b: 0.07164097, a: 1}
 --- !u!1 &7626748155915295751
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4d0a5f1a4e23145aaf392e857bf78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
+  enemyID: 0
   HP: 4
   ATK: 0
   DEF: 0

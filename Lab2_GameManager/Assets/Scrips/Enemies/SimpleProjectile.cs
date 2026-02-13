@@ -17,6 +17,13 @@ public class SimpleProjectile : MonoBehaviour
         rb.linearVelocity = dir_ * speed;
         StartCoroutine(ProjectileTimer());
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<TopDownPlayerMovement>().TakeDamage(1);
+        }
+    }
 
     public IEnumerator ProjectileTimer()
     {

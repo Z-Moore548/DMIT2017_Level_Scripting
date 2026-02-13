@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,9 +8,11 @@ public class TopDownPlayerMovement : MonoBehaviour
     public InputAction moveInput, attackAction, interactAction;
     private Vector2 movementDirection = Vector2.zero;
     public float moveSpeed;
+    public int currentHP, maxHP, tresureCollected;
     public event Action<Vector2> OnMove;
     Rigidbody2D rb;
     public bool interact;
+    public GameObject indi;
     private void Awake()
     {
         moveInput.Enable();
@@ -39,6 +42,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     public void AttackInput(InputAction.CallbackContext c)
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 2);
+        StartCoroutine(AttackIndi());
         foreach (Collider2D hit in hits)
         {
             if (hit.gameObject.CompareTag("Enemy"))
@@ -51,5 +55,22 @@ public class TopDownPlayerMovement : MonoBehaviour
     public void InteractInput(InputAction.CallbackContext c)
     {
         interact = true;
+    }
+
+
+    public void TakeDamage(int dmg_)
+    {
+        currentHP -= dmg_;
+    }
+    public void RestoreHP()
+    {
+        currentHP = maxHP;
+    }
+
+    IEnumerator AttackIndi()
+    {
+        indi.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        indi.SetActive(false);
     }
 }

@@ -10,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     public GameState gameState;
     public Transform mapParent;
     private EnemySpawner spawner;
+    private Tresure tresure;
     private int currentMapID;
     private MapState currentMapState;
 
@@ -35,6 +36,7 @@ public class GameStateManager : MonoBehaviour
             {
                 currentMapState = mapState;
                 BeginEnemySpawn(currentMapState);
+                BeginTresureSpawn(currentMapState);
                 break;
             }
         }
@@ -59,6 +61,14 @@ public class GameStateManager : MonoBehaviour
             }
         }
     }
+    public void BeginTresureSpawn(MapState map)
+    {
+        if(map.mapID != 3 || map.mapID != 5)
+        {
+            tresure = mapParent.GetComponentInChildren<Tresure>();
+            tresure.ShowTresure(map.tresureCollected);
+        }
+    }
 
     [ContextMenu("Try Save")]
     public void SaveGameState()
@@ -70,7 +80,7 @@ public class GameStateManager : MonoBehaviour
             {
                 currentMapState.enemyDictionary[enemy.enemyID].currentHP = enemy.HP;
                 Debug.Log(currentMapState.enemyDictionary[enemy.enemyID].currentHP);
-            
+                currentMapState.tresureCollected = tresure.gotIt;
             }
         }
         
@@ -81,11 +91,13 @@ public class GameStateManager : MonoBehaviour
 public class MapState
 {
     public int mapID;
+    public bool tresureCollected;
     public List<EnemyState> enemyStates;
     [NonSerialized] public Dictionary<int, EnemyState> enemyDictionary;
 
     public void InitializeDictionary()
     {
+        tresureCollected = false;
         enemyDictionary = new Dictionary<int, EnemyState>();
         foreach(EnemyState enemy in enemyStates)
         {
