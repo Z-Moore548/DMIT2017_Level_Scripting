@@ -25,6 +25,7 @@ public class InnSleep : MonoBehaviour
                 GameStateManager.Instance.ResetEnemies();
                 player.GetComponent<TopDownPlayerMovement>().RestoreHP();
                 player.GetComponent<TopDownPlayerMovement>().interact = false;
+                Saving.Instance.SaveData(GameStateManager.Instance.gameState);
             }
         }
         

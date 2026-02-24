@@ -13,10 +13,13 @@ public class GameStateManager : MonoBehaviour
     private Tresure tresure;
     private int currentMapID;
     private MapState currentMapState;
+    public Saving saving;
 
     private void Awake()
     {
         Instance = this;
+        saving = Saving.Instance;
+        //gameState = saving.LoadData();
     }
     private void Start()
     {
@@ -97,7 +100,6 @@ public class MapState
 
     public void InitializeDictionary()
     {
-        tresureCollected = false;
         enemyDictionary = new Dictionary<int, EnemyState>();
         foreach(EnemyState enemy in enemyStates)
         {
