@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: deaa584f3d926c34d92d3ee08f2d3df9, type: 3}
   m_Name: AnimationSO 3
   m_EditorClassIdentifier: Assembly-CSharp::AnimationData
-  animationName: Walk Right
+  animationName: WalkLeft
   frames:
-  - {fileID: 2093891232, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
-  - {fileID: -955416779, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
-  - {fileID: -1452401678, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
-  frameDelay: 0.2
+  - {fileID: 2058056549, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
+  - {fileID: 1878539197, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
+  - {fileID: -293438735, guid: ecba0713aa35a9a4da42e7b5c91081f0, type: 3}
+  frameDelay: 0.3

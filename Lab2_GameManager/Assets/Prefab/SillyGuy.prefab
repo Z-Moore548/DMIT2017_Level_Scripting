@@ -253,9 +253,9 @@ MonoBehaviour:
   - state: 0
     animation: {fileID: 11400000, guid: 603366c8cda06114dbbe4bd4ce4928c9, type: 2}
   - state: 2
-    animation: {fileID: 11400000, guid: 29fe09d3dc05ff3469df15c85df24e1c, type: 2}
-  - state: 3
     animation: {fileID: 11400000, guid: 79ab9e095b389384eba818f3186f21b3, type: 2}
+  - state: 3
+    animation: {fileID: 11400000, guid: 29fe09d3dc05ff3469df15c85df24e1c, type: 2}
   - state: 4
     animation: {fileID: 11400000, guid: fb4b7f915275eab4d875208522fa91c2, type: 2}
   - state: 5
@@ -373,8 +373,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   moveSpeed: 5000
-  currentHP: 10
-  maxHP: 10
+  currentHP: 20
+  maxHP: 20
+  tresureCollected: 0
   interact: 0
   indi: {fileID: 6313473319980592933}
 --- !u!50 &7670797238580837641

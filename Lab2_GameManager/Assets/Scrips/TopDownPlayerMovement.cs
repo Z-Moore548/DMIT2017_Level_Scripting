@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TopDownPlayerMovement : MonoBehaviour
 {
@@ -12,13 +14,15 @@ public class TopDownPlayerMovement : MonoBehaviour
     public event Action<Vector2> OnMove;
     Rigidbody2D rb;
     public bool interact;
-    public GameObject indi;
+    public GameObject indi, savingText;
     private void Awake()
     {
         moveInput.Enable();
         attackAction.Enable();
         interactAction.Enable();
         rb = GetComponent<Rigidbody2D>();
+        savingText.SetActive(false);
+
         moveInput.performed += GetMoveVector;
         moveInput.canceled += GetMoveVector;
         attackAction.performed += AttackInput;
@@ -61,10 +65,16 @@ public class TopDownPlayerMovement : MonoBehaviour
     public void TakeDamage(int dmg_)
     {
         currentHP -= dmg_;
+        if(currentHP <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
     public void RestoreHP()
     {
         currentHP = maxHP;
+        savingText.SetActive(true);
+        StartCoroutine(SavingThing());
     }
 
     IEnumerator AttackIndi()
@@ -72,5 +82,10 @@ public class TopDownPlayerMovement : MonoBehaviour
         indi.SetActive(true);
         yield return new WaitForSeconds(.5f);
         indi.SetActive(false);
+    }
+    IEnumerator SavingThing()
+    {
+        yield  return new WaitForSeconds(2);
+        savingText.SetActive(false);
     }
 }

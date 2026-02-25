@@ -14,15 +14,22 @@ public class GameStateManager : MonoBehaviour
     private int currentMapID;
     private MapState currentMapState;
     public Saving saving;
+    public LoadCarry carry;
 
     private void Awake()
     {
         Instance = this;
         saving = Saving.Instance;
-        //gameState = saving.LoadData();
+        carry = GameObject.FindGameObjectWithTag("Carry").GetComponent<LoadCarry>();
+        
     }
     private void Start()
     {
+        if(carry.load == true)
+        {
+            Debug.Log("WHAY");
+            gameState = saving.LoadData();
+        }
         foreach(MapState mapState in gameState.mapStates)
         {
             mapState.InitializeDictionary();

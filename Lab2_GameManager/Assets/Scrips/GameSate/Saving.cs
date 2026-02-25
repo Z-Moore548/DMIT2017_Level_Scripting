@@ -46,4 +46,10 @@ public class Saving : MonoBehaviour
             return null;
         }
     }
+
+    public void DeleteFile()
+    {
+        File.Delete(filePath);
+        File.Delete($"{filePath}.meta");
+    }
 }
