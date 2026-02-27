@@ -12,7 +12,7 @@ public class Saving : MonoBehaviour
     {
         Instance = this;
         
-        filePath = "Assets/Resources/SaveData/SaveGame.json";
+        filePath = $"{Application.persistentDataPath}/SaveData.json";
     }
     void Start()
     {
