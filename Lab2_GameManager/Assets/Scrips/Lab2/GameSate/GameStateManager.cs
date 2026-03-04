@@ -20,16 +20,16 @@ public class GameStateManager : MonoBehaviour
     {
         Instance = this;
         saving = Saving.Instance;
-        carry = GameObject.FindGameObjectWithTag("Carry").GetComponent<LoadCarry>();
+        //carry = GameObject.FindGameObjectWithTag("Carry").GetComponent<LoadCarry>();
         
     }
     private void Start()
     {
-        if(carry.load == true)
-        {
-            Debug.Log("WHAY");
-            gameState = saving.LoadData();
-        }
+        // if(carry.load == true)
+        // {
+        //     Debug.Log("WHAY");
+        //     gameState = saving.LoadData();
+        // }
         foreach(MapState mapState in gameState.mapStates)
         {
             mapState.InitializeDictionary();

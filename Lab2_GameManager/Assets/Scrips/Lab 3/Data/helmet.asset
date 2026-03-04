@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9109246bd6c22a64e9b98db17eb4ce08, type: 3}
+  m_Name: helmet
+  m_EditorClassIdentifier: Assembly-CSharp::ArmorItemSO
+  itemName: helmet
+  flavourText: its a helmet
+  icon: {fileID: 21300000, guid: 4805cc31a622242309b0d844f1af0d4d, type: 3}
+  armorRating: 10
+  equipmentSlot: 0
