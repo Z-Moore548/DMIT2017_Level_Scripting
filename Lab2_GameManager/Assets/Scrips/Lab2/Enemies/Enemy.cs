@@ -25,6 +25,8 @@ public abstract class Enemy : MonoBehaviour
     private AIMovement aiMovement;
 
     private bool patroling, outofRange;
+    [Header("Loot")]
+    public InventoryItemSO loot;
 
     private void Awake()
     {
@@ -57,6 +59,7 @@ public abstract class Enemy : MonoBehaviour
     }
     public void Die()
     {
+        InventoryManager.Instance.AddItem(loot);
         gameObject.SetActive(false);
     }
     public void Pursue()

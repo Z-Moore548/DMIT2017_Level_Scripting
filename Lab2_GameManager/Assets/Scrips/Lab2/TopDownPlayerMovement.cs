@@ -7,19 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class TopDownPlayerMovement : MonoBehaviour
 {
-    public InputAction moveInput, attackAction, interactAction;
+    public InputAction moveInput, attackAction, interactAction, inventoryAction;
     private Vector2 movementDirection = Vector2.zero;
     public float moveSpeed;
     public int currentHP, maxHP, tresureCollected;
     public event Action<Vector2> OnMove;
     Rigidbody2D rb;
-    public bool interact;
-    public GameObject indi, savingText;
+    public bool interact, inventoryOpen;
+    public GameObject indi, savingText, inventoryPrefab, inventorytmp;
     private void Awake()
     {
         moveInput.Enable();
         attackAction.Enable();
         interactAction.Enable();
+        inventoryAction.Enable();
         rb = GetComponent<Rigidbody2D>();
         savingText.SetActive(false);
 
@@ -27,6 +28,7 @@ public class TopDownPlayerMovement : MonoBehaviour
         moveInput.canceled += GetMoveVector;
         attackAction.performed += AttackInput;
         interactAction.performed += InteractInput;
+        inventoryAction.performed += InventoryInput;
 
     }
 
@@ -60,6 +62,22 @@ public class TopDownPlayerMovement : MonoBehaviour
     {
         interact = true;
     }
+    public void InventoryInput(InputAction.CallbackContext c)
+    {
+        
+        if (!inventoryOpen)
+        {
+           inventorytmp = Instantiate(inventoryPrefab);
+           //inventorytmp.GetComponent<InventoryUIController>().InitUI();
+           inventoryOpen = true;
+        }
+        else
+        {
+            Destroy(inventorytmp);
+            inventoryOpen = false;
+        }
+    }
+        
 
 
     public void TakeDamage(int dmg_)

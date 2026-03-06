@@ -246,6 +246,7 @@ MonoBehaviour:
   attackRange: {fileID: 8536234098359854497}
   playerPosition: {x: 0, y: 0}
   patrolRange: {x: 3, y: 3}
+  loot: {fileID: 11400000, guid: 6c9bd4338c291814b85ff8d32fc55172, type: 2}
   projectilePrefab: {fileID: 2532890393309705171, guid: 625fc3f388cbd84449d044f4cc62f599, type: 3}
   projectileSpawnLocation: {fileID: 7848875038671721694}
 --- !u!114 &4842235807568823153

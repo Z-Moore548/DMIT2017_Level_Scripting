@@ -6,6 +6,11 @@ public class InventoryUIController : MonoBehaviour
     public InventoryManager targetInventory;
     public GameObject buttonPrefab;
     public Transform contentParent;
+    void Start()
+    {
+        targetInventory = InventoryManager.Instance;
+        InitUI();
+    }
 
     [ContextMenu("Init UI")]
     public void InitUI()

@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
     public Dictionary<InventoryItemSO, InventoryItemData> inventory = new Dictionary<InventoryItemSO, InventoryItemData>();
-    public InventoryItemSO[] tmp;
+    public InventoryItemSO[] startingInventory;
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
-       foreach(InventoryItemSO item in tmp)
+       foreach(InventoryItemSO item in startingInventory)
         {
             AddItem(item);
         }

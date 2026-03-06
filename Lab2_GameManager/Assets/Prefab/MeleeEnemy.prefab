@@ -121,6 +121,7 @@ MonoBehaviour:
   attackRange: {fileID: 99657110711943002}
   playerPosition: {x: 0, y: 0}
   patrolRange: {x: 2, y: 2}
+  loot: {fileID: 11400000, guid: 6c9bd4338c291814b85ff8d32fc55172, type: 2}
   radius: 1
   indi: {fileID: 3622092368420103377}
 --- !u!114 &6396884483142376353
