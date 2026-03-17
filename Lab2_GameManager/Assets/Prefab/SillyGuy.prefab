@@ -372,12 +372,33 @@ MonoBehaviour:
       m_Action: Interact
       m_Flags: 0
     m_Flags: 0
+  inventoryAction:
+    m_Name: Inventory
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ee350c9b-20b0-470c-b8d0-6508bc49572b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f9c6c26f-d302-4024-ba17-49b43ee5a381
+      m_Path: <Keyboard>/i
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Inventory
+      m_Flags: 0
+    m_Flags: 0
   moveSpeed: 5000
   currentHP: 20
   maxHP: 20
   tresureCollected: 0
   interact: 0
+  inventoryOpen: 0
   indi: {fileID: 6313473319980592933}
+  savingText: {fileID: 0}
+  inventoryPrefab: {fileID: 3878741370142222687, guid: 79297c68226395a49bf20c29fd8bb068, type: 3}
+  inventorytmp: {fileID: 0}
 --- !u!50 &7670797238580837641
 Rigidbody2D:
   serializedVersion: 5
