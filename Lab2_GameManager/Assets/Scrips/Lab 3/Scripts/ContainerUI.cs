@@ -12,7 +12,7 @@ public class ContainerUI : MonoBehaviour
     [Header("Debug")]
     public InventoryContainer debugContainer;
 
-    private void Start()
+    private void Awake()
     {
         targetInventory = InventoryManager.Instance;
     }

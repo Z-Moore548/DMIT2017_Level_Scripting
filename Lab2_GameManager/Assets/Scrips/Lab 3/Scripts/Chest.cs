@@ -15,6 +15,7 @@ public class Chest : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.tag != "Player") return;
+        CloseChest();
         player = null;
     }
 
@@ -22,7 +23,12 @@ public class Chest : MonoBehaviour
     {
         if(player != null && player.GetComponent<TopDownPlayerMovement>().interact == true)
         {
-            openchest();
+            if (!chestOpen)
+            {
+                chestOpen = true;
+                openchest();
+            }
+            
         }
     }
 
@@ -31,5 +37,11 @@ public class Chest : MonoBehaviour
         player.GetComponent<TopDownPlayerMovement>().interact = false;
         inventorytmp = Instantiate(containerPrefab);
         inventorytmp.GetComponent<ContainerUI>().InitUI(container);
+    }
+
+    void CloseChest()
+    {
+        Destroy(inventorytmp);
+        chestOpen = false;
     }
 }
